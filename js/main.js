@@ -130,13 +130,18 @@
             const whatsappUrl = `https://wa.me/917990224791?text=${whatsappMessage}`;
             window.open(whatsappUrl, '_blank');
             
-            // Track WhatsApp click (for analytics)
-            if (typeof gtag !== 'undefined') {
-                gtag('event', 'whatsapp_click', {
-                    'event_category': 'Contact',
-                    'event_label': 'WhatsApp Message'
-                });
-            }
+            // Track WhatsApp click with Google Analytics
+            gtag('event', 'whatsapp_click', {
+                'event_category': 'Contact',
+                'event_label': 'WhatsApp Message',
+                'value': 1
+            });
+            
+            // Track form submission
+            gtag('event', 'form_submit', {
+                'event_category': 'Contact',
+                'event_label': 'Contact Form'
+            });
         });
     }
 
@@ -301,6 +306,13 @@ function openModal(imageSrc) {
         modalImage.src = imageSrc;
         modal.style.display = 'block';
         document.body.style.overflow = 'hidden';
+        
+        // Track gallery image view
+        gtag('event', 'gallery_view', {
+            'event_category': 'Gallery',
+            'event_label': imageSrc,
+            'value': 1
+        });
         
         // Add keyboard support
         document.addEventListener('keydown', handleModalKeydown);
