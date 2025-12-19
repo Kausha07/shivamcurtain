@@ -292,3 +292,49 @@
 
 })();
 
+// Gallery Modal Functions (Global scope for onclick handlers)
+function openModal(imageSrc) {
+    const modal = document.getElementById('imageModal');
+    const modalImage = document.getElementById('modalImage');
+    
+    if (modal && modalImage) {
+        modalImage.src = imageSrc;
+        modal.style.display = 'block';
+        document.body.style.overflow = 'hidden';
+        
+        // Add keyboard support
+        document.addEventListener('keydown', handleModalKeydown);
+    }
+}
+
+function closeModal() {
+    const modal = document.getElementById('imageModal');
+    
+    if (modal) {
+        modal.style.display = 'none';
+        document.body.style.overflow = '';
+        
+        // Remove keyboard support
+        document.removeEventListener('keydown', handleModalKeydown);
+    }
+}
+
+function handleModalKeydown(e) {
+    if (e.key === 'Escape') {
+        closeModal();
+    }
+}
+
+// Close modal when clicking outside the image
+document.addEventListener('DOMContentLoaded', function() {
+    const modal = document.getElementById('imageModal');
+    
+    if (modal) {
+        modal.addEventListener('click', function(e) {
+            if (e.target === modal) {
+                closeModal();
+            }
+        });
+    }
+});
+
