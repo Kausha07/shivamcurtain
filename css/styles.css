@@ -156,19 +156,21 @@ body {
     gap: var(--spacing-xs);
 }
 
-.logo-image {
-    height: 50px;
-    width: auto;
-    max-height: 50px;
-    object-fit: contain;
-    display: block;
-}
-
 .logo-text {
     font-size: 1.5rem;
     font-weight: 700;
     color: var(--primary-color);
     display: inline-block;
+    text-decoration: none;
+}
+
+.logo-image {
+    height: 50px;
+    width: auto;
+    max-height: 50px;
+    object-fit: contain;
+    display: inline-block;
+    margin-right: var(--spacing-xs);
 }
 
 /* Hide logo text on very small screens, show only logo image */
