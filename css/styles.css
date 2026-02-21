@@ -1574,6 +1574,7 @@ body {
         min-width: 44px;
         min-height: 44px;
         margin:0px;
+        position: sticky;
     }
 }
 
